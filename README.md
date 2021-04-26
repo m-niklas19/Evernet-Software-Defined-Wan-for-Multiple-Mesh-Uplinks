@@ -23,7 +23,7 @@ The second purpose is an intuitive changeover in case one uplinks disconnects.
   - Which kind of traffic flows can be easily loadbalanced hence muliuplexed across multiple gayteways?
 - Create a usable Freinfunk web-based user interface for administration.
 
-##ToDo List:
+## ToDo List:
 - [ ] Check & Add Related Work with References
 - [ ] Software Design
 - [ ] Programmierung / Umsetzung
