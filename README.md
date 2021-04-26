@@ -22,3 +22,11 @@ The second purpose is an intuitive changeover in case one uplinks disconnects.
   - How will handover switches in cases of failure speed up?
   - Which kind of traffic flows can be easily loadbalanced hence muliuplexed across multiple gayteways?
 - Create a usable Freinfunk web-based user interface for administration.
+
+##ToDo List:
+- [ ] Check & Add Related Work with References
+- [ ] Software Design
+- [ ] Programmierung / Umsetzung
+- [ ] Installationsanleitung
+- [ ] Validierung / Limitierung
+- [ ] Zusammenfassung & Ausblick
