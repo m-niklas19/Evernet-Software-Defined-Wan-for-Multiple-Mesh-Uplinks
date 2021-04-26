@@ -1,4 +1,4 @@
-## Evernet-Software-Defined-Wan-for-Multiple-Mesh-Uplinks
+## Software Defined Wan for Multiple Uplinks in Wireless Mesh Networks
 
 ### Motivation
 I have been told from different persons that there is no proper software to combine multiple uplinks to the internet.
