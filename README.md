@@ -1,5 +1,15 @@
 ## Software Defined Wan for Multiple Uplinks in Wireless Mesh Networks
 
+1. Introduction
+  * Motivation
+  * Goals
+2. Main Part
+  * Related Work
+  * My solution
+3. Summary
+
+********************
+
 ### Motivation
 I have been told from different persons that there is no proper software to combine multiple uplinks to the internet.
 So I decided to tackle this problem on my own as an open source project.
