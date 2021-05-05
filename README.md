@@ -1,11 +1,11 @@
 ## Software Defined Wan for Multiple Uplinks in Wireless Mesh Networks
 
 1. Introduction
-    #. Motivation
-    #. Goals
+    - Motivation
+    - Goals
 2. Main Part
-    #. Related Work
-    #. My solution
+    - Related Work
+    - My solution
 3. Summary
 
 ********************
