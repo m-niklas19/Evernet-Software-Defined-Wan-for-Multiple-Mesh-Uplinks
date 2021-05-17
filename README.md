@@ -4,6 +4,10 @@
     - Motivation
     - Goals
 2. Main Part
+    - Principles of multiple uplink sharing
+        - Package based
+        - Flow based
+        - Per Host
     - Related Work
     - My solution
 3. Summary
