@@ -18,6 +18,8 @@
         - Result
         - Differences to existing solutions
 3. Summary
+4. Attachment
+    - Installation guide
 
 ********************
 
