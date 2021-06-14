@@ -10,8 +10,8 @@
         - Per Host
     - Related Work
         - Viprinet
-        - ...
-        - ...
+        - iTel
+        - others
     - My solution
         - The best principle for me
         - Predecure
@@ -35,6 +35,12 @@ Usecases of this software could be:
 Development of a software wich combines multiple uplinks into one.
 This software has two main purposes. The first one is to do a loadbalancing between the uplinks to enable an even utilization.
 The second purpose is an intuitive changeover in case one uplinks disconnects.
+
+### Principles of multiple uplink sharing
+
+
+### Related Work
+The goal of almost all SD-Wan solution is to connect branch offices to your servers. So they are using ...
 
 ### Work schedule
 - Get a general understanding of how multi gateway mesh network work
