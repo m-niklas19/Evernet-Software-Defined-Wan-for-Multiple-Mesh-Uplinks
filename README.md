@@ -37,6 +37,11 @@ This software has two main purposes. The first one is to do a loadbalancing betw
 The second purpose is an intuitive changeover in case one uplinks disconnects.
 
 ### Principles of multiple uplink sharing
+#### Per Packet
+
+#### Per Flow
+
+#### Per Host
 
 
 ### Related Work
