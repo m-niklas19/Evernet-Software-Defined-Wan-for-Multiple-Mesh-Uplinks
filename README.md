@@ -40,17 +40,20 @@ This software has two main purposes. The first one is to do a loadbalancing betw
 The second purpose is an intuitive changeover in case one uplinks disconnects.
 
 ### Principles of multiple uplink sharing
-#### wireguard and mwan3
+#### Wireguard and mwan3
+Our goal is to combine multiple uplinks, but the basic problem is that most consumer router do not have more than one physical wan connection. So we need more wan interfaces on our router. The solution is mwan3. This software allows to add virtual wan interfaces to the main router. Each of those virtual interfaces is connected via wireguard vpn tunnel to an other router with a physical wan interface. With this procedure we are able to increase the number of uplinks on the main router.
 
-#### load sharing
+#### Load sharing
+One operation mode is the sharing of the load between the connected uplinks. There are several ways this could be done with different advantages and disadvantages.
 ##### Per Packet
-The best but not the simplest way is the packet based switching between uplinks. As the name says, every packet is send to one of the uplink.
+Packetbased load sharing allows the most evenly distributed load. But it also entails the biggest disadvantage, the need of a server to recombine the packets.
+Every packet is send over one of the uplinks in e.g. round robin procedure. The problem is that every wan interface has its own IP, so some services could block the connection because of different IPs of the packets.
 
 ##### Per Flow
 
 ##### Per Host
 
-#### failover
+#### Failover
 
 
 ### Related Work
