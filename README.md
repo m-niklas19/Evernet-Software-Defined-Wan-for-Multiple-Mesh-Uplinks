@@ -5,9 +5,12 @@
     - Goals
 2. Main Part
     - Principles of multiple uplink sharing
-        - Package based
-        - Flow based
-        - Per Host
+        - wireguard and mwan3
+        - load sharing
+            - Per Packet
+            - Per Flow
+            - Per Host
+        - failover
     - Related Work
         - Viprinet
         - iTel
@@ -37,11 +40,17 @@ This software has two main purposes. The first one is to do a loadbalancing betw
 The second purpose is an intuitive changeover in case one uplinks disconnects.
 
 ### Principles of multiple uplink sharing
-#### Per Packet
+#### wireguard and mwan3
 
-#### Per Flow
+#### load sharing
+##### Per Packet
+The best but not the simplest way is the packet based switching between uplinks. As the name says, every packet is send to one of the uplink.
 
-#### Per Host
+##### Per Flow
+
+##### Per Host
+
+#### failover
 
 
 ### Related Work
