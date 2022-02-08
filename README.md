@@ -1,57 +1,56 @@
-## Software Defined Wan for Multiple Uplinks in Wireless Mesh Networks
+## Softwarebasiertes WAN für mehrere Uplinks in drahtlosen Mesh-Netzwerken 
 
-1. Introduction
+1. Einleitung
     - Motivation
-    - Goals
-2. Main Part
-    - Principles of multiple uplink sharing
-        - wireguard and mwan3
-        - load sharing
-            - Per Packet
-            - Per Flow
-            - Per Host
-        - failover
-    - Related Work
+    - Ziel
+2. Hauptteil
+    - Varianten der Nutzung mehrerer Uplinks
+        - Wireguard und mwan3 -> passt nicht unbedingt an diese Stelle
+        - Lastverteilung
+            - Paketbasiert
+            - Flowbasiert
+            - Hostbasiert
+        - Failover
+    - Ähnliche Systeme
         - Viprinet
         - iTel
-        - others
-    - My solution
-        - The best principle for me
+        - andere
+    - Meine Lösung
+        - Die beste Variante für mich
         - Predecure
-        - Result
-        - Differences to existing solutions
-3. Summary
-4. Attachment
-    - Installation guide
+        - Ergebnis
+        - Unterschiede zu bestehenden Lösungen
+3. Zusammenfassung
+4. Anhang
+    - Installationsanleitung
 
 ********************
 
+
 ### Motivation
-I have been told from different persons that there is no proper software to combine multiple uplinks to the internet.
-So I decided to tackle this problem on my own as an open source project.
-Usecases of this software could be:
-- Livestreams; need a stable internet connection
-- Computer centres; need a stable and fast internet connection
-- Organizations like "Freifunk"; need multiple internet connections for their mesh-networks
+Ich habe durch Recherchen herausgefunden, dass es keine gute Lösung für Privatkunden gibt, mit der sich mehrere Internetverbindungen zu einer verbinden lassen. Also habe ich beschlossen, dieses Problem selbstständig als Open-Source-Projekt anzugehen.
+Folgende Anwendungsfälle könnte es für diese Software geben:
+- Livestreams, welch eine dauerhaft stabile Internetverbindung benötigen
+- Selbst gehostete Server, die immer erreichbar sein sollen
+- Initiativen wie Freifunk", die mehrere Internetverbindungen für ihre Mesh-Netzwerke brauchen
 
-### Goal
-Development of a software wich combines multiple uplinks into one.
-This software has two main purposes. The first one is to do a loadbalancing between the uplinks to enable an even utilization.
-The second purpose is an intuitive changeover in case one uplinks disconnects.
+### Ziel
+Entwicklung einer Software, die mehrere Internetverbindungen zu einer kombiniert.
+Diese Software soll 2 grundlegende Betriebsmodi haben. Zum Einen ist es möglich eine Lastverteilung zwschen den beiden Internetverbindungen durchzuführen. Zum Anderen ist es möglich von einer Verbindung zur anderen zu wechseln, falls ein Uplink wegbricht.
 
-### Principles of multiple uplink sharing
+
+### Varianten der Nutzung mehrerer Uplinks
 #### Wireguard and mwan3
-Our goal is to combine multiple uplinks, but the basic problem is that most consumer router do not have more than one physical wan connection. So we need more wan interfaces on our router. The solution is mwan3. This software allows to add virtual wan interfaces to the main router. Each of those virtual interfaces is connected via wireguard vpn tunnel to an other router with a physical wan interface. With this procedure we are able to increase the number of uplinks on the main router.
+Da die meisten Router für Privatnutzer nur einen WAN Anschluss besitzen ist es nötig einen Router mit mehreren WAN Anschlüssen zu verwenden. Ich nutze dafür einen Router mit dem Linux Beriebssystem openWRT auf dem mwan3 installiert wird. Letzteres erlaubt es virtuelle WAN Anschlüsse hinzuzufügen. Jedes virtuelle WAN Interfacewird dann via Wireguard VPN Tunnel mit einem weiteren Router verbunden welcher dann das physische WAN Interface zur Verfügung stellt.
 
-#### Load sharing
-One operation mode is the sharing of the load between the connected uplinks. There are several ways this could be done with different advantages and disadvantages.
-##### Per Packet
-Packetbased load sharing allows the most evenly distributed load. But it also entails the biggest disadvantage, the need of a server to recombine the packets.
-Every packet is send over one of the uplinks in e.g. round robin procedure. The problem is that every wan interface has its own IP, so some services could block the connection because of different IPs of the packets.
+#### Lastverteilung
+Wie schon eingangs erwähnt ist einer Betriebsmodus die Lastverteilung. Diese kann auf mehrere Arten durchgeführt werden, welche veschiedene Vor- und Nachteile bieten.
+##### Paketbasiert
+Eine paketbasierte Lastverteilung ermöglicht die gleichmäßigste Verteilung auf die beiden Uplinks, bringt aber auch den größen Nachteil mit sich. Es wird zwingend ein Server benötigt, der die einzelnen Pakete wieder zusammenführt und mit seiner Public IP weiterleitet. Das liegt daran, dass jede Internetverbindung ihre eigene Public IP besitzt und einige Dienste dann nicht funktionieren könnten, weil die Pakete einer Sitzung mit IPs von zwei verschiedenen Absendern ankommen. 
 
-##### Per Flow
+##### Flowbasiert
 
-##### Per Host
+##### Hostbasiert
 
 #### Failover
 
