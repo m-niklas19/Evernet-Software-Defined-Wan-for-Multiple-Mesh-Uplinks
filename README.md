@@ -51,8 +51,10 @@ Eine paketbasierte Lastverteilung ermöglicht die gleichmäßigste Verteilung au
 ##### Flowbasiert
 
 ##### Hostbasiert
+Die hostbasierte Lastverteilung is die einfachste, aber auch ungleichmäßigste Variante. Dabei wird jedem Host ein Uplink zugeteilt, über den dann sein Traffic läuft. In kleinen Netzwerken mit nur wenigen Hosts kann das zu einer ungleichmäßigen Auslastung der Internetzugänge führen. Es ist daher eher für größere Netzwerke mit vielen Hosts geeignet.
 
 #### Failover
+Das Ziel eines Failovers ist es, beim Ausfall einer Internetverbindung auf eine zweite zu wechseln. Diese Variante ermöglicht es eine dauerhaft stabile Internetverbing aufrecht zu erhalten, auch wenn ein Uplink wegbricht. Dadurch ist der Failover die sicherste Möglichekeit des Zugangs zum Internet, aber bietet keine Geschwindigkeitsvorteile.
 
 
 ### Related Work
