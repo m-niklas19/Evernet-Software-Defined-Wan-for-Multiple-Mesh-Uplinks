@@ -57,8 +57,10 @@ Die hostbasierte Lastverteilung is die einfachste, aber auch ungleichmäßigste 
 Das Ziel eines Failovers ist es, beim Ausfall einer Internetverbindung auf eine zweite zu wechseln. Diese Variante ermöglicht es eine dauerhaft stabile Internetverbing aufrecht zu erhalten, auch wenn ein Uplink wegbricht. Dadurch ist der Failover die sicherste Möglichekeit des Zugangs zum Internet, aber bietet keine Geschwindigkeitsvorteile.
 
 
-### Related Work
-The goal of almost all SD-Wan solution is to connect branch offices to your servers. So they are using ...
+### Ähnliche Systeme
+Das Ziel von fast allen SD-WAN Lösungen ist es Zweigsetllen mit der Hauptniederlassung oder dem Rechenzentrum zu verbinden. Deswegen benötigt man bei diesen Varianten zwei Geräte.
+
+### Meine Lösung
 
 ### Work schedule
 - Get a general understanding of how multi gateway mesh network work
