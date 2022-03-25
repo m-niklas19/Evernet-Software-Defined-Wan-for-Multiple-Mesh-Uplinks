@@ -73,9 +73,9 @@ Das Ziel von fast allen SD-WAN Lösungen ist es Zweigsetllen mit der Hauptnieder
 - Create a usable Freinfunk web-based user interface for administration.
 
 ## ToDo List:
-- [ ] Check & Add Related Work with References
-- [ ] Software Design
-- [ ] Programmierung / Umsetzung
+- [x] Check & Add Related Work with References
+- [x] Software Design
+- [x] Programmierung / Umsetzung
 - [ ] Installationsanleitung
 - [ ] Validierung / Limitierung
 - [ ] Zusammenfassung & Ausblick
