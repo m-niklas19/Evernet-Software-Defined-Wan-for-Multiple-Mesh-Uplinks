@@ -15,8 +15,8 @@
         - iTel
         - andere
     - Meine Lösung
+		- Die beste Variante für mich
 		- Wireguard und mwan3
-        - Die beste Variante für mich
         - Procedure
         - Ergebnis
         - Unterschiede zu bestehenden Lösungen
@@ -69,6 +69,7 @@ Der Bonding Aggregator, welcher die Datenpakete wieder zusammenführt, muss nich
 Viele Business Router bieten die Möglichkeit an mehr als einem WAN Interface Internetverbindungen anzuschließen. Diese bieten oft aber nur die Möglichkeit des Failovers, also einer Redundanz, falls ein Uplink ausfällt. In seltenen Fällen gibt es die Möglichkeit einer Lastverteilung, wie z.B. bei Sophos. Hier wird aber nicht näher erläutert, auf welchem Weg das Loadbalancing realisiert wird.
 
 ### Meine Lösung
+#### Die beste Variante für mich
 
 #### Wireguard and mwan3
 Da die meisten Router für Privatnutzer nur einen WAN Anschluss besitzen ist es nötig einen Router mit mehreren WAN Anschlüssen zu verwenden. Ich nutze dafür einen Router mit dem Linux Beriebssystem openWRT auf dem mwan3 installiert wird. Letzteres erlaubt es unter anderem virtuelle WAN Anschlüsse hinzuzufügen. Jedes virtuelle WAN Interfacewird dann via Wireguard VPN Tunnel mit einem weiteren Router verbunden welcher dann das physische WAN Interface zur Verfügung stellt.
