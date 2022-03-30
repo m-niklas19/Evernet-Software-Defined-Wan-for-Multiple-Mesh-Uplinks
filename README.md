@@ -57,7 +57,16 @@ Das Ziel eines Failovers ist es, beim Ausfall einer Internetverbindung auf eine 
 
 
 ### Ähnliche Systeme
-Das Ziel von fast allen SD-WAN Lösungen ist es Zweigsetllen mit der Hauptniederlassung oder dem Rechenzentrum zu verbinden. Deswegen benötigt man bei diesen Varianten zwei Geräte.
+#### Viprinet
+Viprinet hat das Ziel eine hohe Ausfallsicherheit und eine Aggregation von mehreren Internetverbindungen zu gewährleisten. Dafür nutzen sie zwei Geräte. Einen Router mit mehreren WAN Interfaces, welcher an dem Standort positioniert wird, an dem die Ausfallsichere Internetverbindung benötigt wird. Dieser Router baut dann pro WAN Interface eine VPN Verbindung zu dem zweiten Gerät auf; dem VPN Hub. Dieser Hub ist so positioniert, dass er immer erreichbar ist, also z.B. in einem Rechenzentrum, weil dieser den eigentlichen Internetaustrittspunkt darstellt. Viprinet nutzt vermutlich eine Paketbasierte Lastverteilung, bei der der VPN Hub die einzelnen Pakete, die durch die verschiedenen WAN Interfaces auch verschiedene IPs besitzen, wieder zusammenfügt und mit seiner IP an das Ziel weiterleitet.
+Zu bachten ist dabei, dass der Kunde zwei Geräte kaufen muss. Der Router, welcher in der Firma positioniert wird und den VPN Hub, welcher in einem Rechenzentrum untergebracht werden sollte. Das bringt natürlich auch hohe Kosten mit sich, da die Kaufprese der zwei Geräte anfallen und außerdem noch die Miete vom Rechenzentrum.
+
+####iTel
+Das System vin iTel funktioniert im großen und ganzen Ähnlich wie bei Viprinet, jedoch mit einem großen Unterschied.
+Der Bonding Aggregator, welcher die Datenpakete wieder zusammenführt, muss nicht vom Kunden erworben werden, sondern sitzt im Rechenzentrum von iTel. Das hat den Vorteil, dass hier zwar trotzdem monatliche Kosten anfallen, aber nicht der Kaufpreis und außerdem das Gerät vom Hersteller gewartet und im Fehlerfall ausgetauscht wird. Ein Nachteil ist allerdings die Datensicherheit, denn theoretisch kann iTel die Datenpakete analysieren.
+
+####Andere
+Viele Business Router bieten die Möglichkeit an mehr als einem WAN Interface Internetverbindungen anzuschließen. Diese bieten oft aber nur die Möglichkeit des Failovers, also einer Redundanz, falls ein Uplink ausfällt. In seltenen Fällen gibt es die Möglichkeit einer Lastverteilung, wie z.B. bei Sophos. Hier wird aber nicht näher erläutert, auf welchem Weg das Loadbalancing realisiert wird.
 
 ### Meine Lösung
 
