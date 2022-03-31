@@ -20,7 +20,7 @@
         - Konfiguration
         - Ergebnis
         - Unterschiede zu bestehenden Lösungen
-3. Zusammenfassung
+3. Zusammenfassung & Ausblick
 4. Anhang
 	- network Konfiguration (interfaces.md)
 	- mwan3 Konfiguration (mwan3.md)
@@ -94,6 +94,7 @@ Dabei werden in der Netzwerk Konfigurationsdatei (/etc/config/network) zwei Inte
 Mit einem einfachen Ping kann getestet werden, ob die VPN Verbindung aufgebaut wurde und die Gegenstelle erreichbar ist. Dabei ist darauf zu achten, dass der Ping auch über das entsprechende Interface ausgeführt wird, da sonst das ausgewählte Standartinterface benutzt wird.
 Wenn nun beide VPN Tunel stehen kann mit der Installation und Konfiguration von mwan3 fortgefahren werden. 
 Dazu wird das Paket mwan3 nur auf dem MutterRouter installiert. Zur Konfiguration wir die mwan3 Konfigurationsdatei aufgerufen, welche sim im gleichen Ordner wie die network Datei befindet (/etc/config/mwan3). 
+
 
 ### Work schedule
 - Get a general understanding of how multi gateway mesh network work
