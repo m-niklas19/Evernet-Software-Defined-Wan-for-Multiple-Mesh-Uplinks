@@ -57,6 +57,7 @@ Das Ziel eines Failovers ist es, beim Ausfall einer Internetverbindung auf eine 
 
 
 ### Ähnliche Systeme
+
 #### Viprinet
 Viprinet hat das Ziel eine hohe Ausfallsicherheit und eine Aggregation von mehreren Internetverbindungen zu gewährleisten. Dafür nutzen sie zwei Geräte. Einen Router mit mehreren WAN Interfaces, welcher an dem Standort positioniert wird, an dem die Ausfallsichere Internetverbindung benötigt wird. Dieser Router baut dann pro WAN Interface eine VPN Verbindung zu dem zweiten Gerät auf; dem VPN Hub. Dieser Hub ist so positioniert, dass er immer erreichbar ist, also z.B. in einem Rechenzentrum, weil dieser den eigentlichen Internetaustrittspunkt darstellt. Viprinet nutzt vermutlich eine Paketbasierte Lastverteilung, bei der der VPN Hub die einzelnen Pakete, die durch die verschiedenen WAN Interfaces auch verschiedene IPs besitzen, wieder zusammenfügt und mit seiner IP an das Ziel weiterleitet.
 Zu bachten ist dabei, dass der Kunde zwei Geräte kaufen muss. Der Router, welcher in der Firma positioniert wird und den VPN Hub, welcher in einem Rechenzentrum untergebracht werden sollte. Das bringt natürlich auch hohe Kosten mit sich, da die Kaufprese der zwei Geräte anfallen und außerdem noch die Miete vom Rechenzentrum.
@@ -69,7 +70,12 @@ Der Bonding Aggregator, welcher die Datenpakete wieder zusammenführt, muss nich
 Viele Business Router bieten die Möglichkeit an mehr als einem WAN Interface Internetverbindungen anzuschließen. Diese bieten oft aber nur die Möglichkeit des Failovers, also einer Redundanz, falls ein Uplink ausfällt. In seltenen Fällen gibt es die Möglichkeit einer Lastverteilung, wie z.B. bei Sophos. Hier wird aber nicht näher erläutert, auf welchem Weg das Loadbalancing realisiert wird.
 
 ### Meine Lösung
+
 #### Die beste Variante für mich
+Ich habe mich entschieden eine flowbasierte Lastverteilug zu realisieren, da die anderen Varianten zu kompliziert sind oder nicht meinen Anforderungen entsprechen.
+Ein Loadbalancing auf Paketbasis ist für mich zu schwer zu realisieren, weil ich mit einfachen Open Source Mitteln arbeiten und eine zentrale Lösung erschaffen möchte. Es wäre ein zu großer Aufwand und außerdem nicht einfach nachbaubar, wenn ein zusätzlicher Router an einem anderen Ort mit einer stabileren Intenetverbindung installiert werden muss, z.B. in einem Rechenzentrum.
+Eine hostbasierte Lastverteilung kommt für mich auch nicht in Frage, da sich gerade bei Privatanwendern meist nicht viele Geräte im Netzwerk befinden und es auch eine hohe Fluktuation im Netzwerk gibt. (Meist werden nicht alle Geräte gleichzeitig genutzt, z.B. wenn der PC für die Arbeit genutzt wird, wird nicht gleichzeit IP TV gestreamt und das Handy nicht genutzt.) Dies hätte eine relativ ungleichmäßige Verteilung der Last zur folge.
+Bei einem flowbasierten Loadbalancing wird selbst bei nur wenigen Hosts eine ausgewogene Verteilung erzielt ohne, dass externe Hardware benötigt wird.
 
 #### Wireguard and mwan3
 Da die meisten Router für Privatnutzer nur einen WAN Anschluss besitzen ist es nötig einen Router mit mehreren WAN Anschlüssen zu verwenden. Ich nutze dafür einen Router mit dem Linux Beriebssystem openWRT auf dem mwan3 installiert wird. Letzteres erlaubt es unter anderem virtuelle WAN Anschlüsse hinzuzufügen. Jedes virtuelle WAN Interfacewird dann via Wireguard VPN Tunnel mit einem weiteren Router verbunden welcher dann das physische WAN Interface zur Verfügung stellt.
