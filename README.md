@@ -17,18 +17,20 @@
     - Meine Lösung
 		- Die beste Variante für mich
 		- Wireguard und mwan3
-        - Procedure
+        - Konfiguration
         - Ergebnis
         - Unterschiede zu bestehenden Lösungen
 3. Zusammenfassung
 4. Anhang
-    - Installationsanleitung
+	- network Konfiguration (interfaces.md)
+	- mwan3 Konfiguration (mwan3.md)
+    - Installationsanleitung (Installation.md)
 
 ********************
 
 
 ### Motivation
-Ich habe durch Recherchen herausgefunden, dass es keine gute Lösung für Privatkunden gibt, mit der sich mehrere Internetverbindungen zu einer verbinden lassen. Also habe ich beschlossen, dieses Problem selbstständig als Open-Source-Projekt anzugehen.
+Ich habe durch Recherchen herausgefunden, dass es keine kostengünstige Lösung für Privatkunden gibt, mit der sich mehrere Internetverbindungen zu einer verbinden lassen. Also habe ich beschlossen, dieses Problem selbstständig als Open-Source Projekt anzugehen.
 Folgende Anwendungsfälle könnte es für diese Software geben:
 - Livestreams, welch eine dauerhaft stabile Internetverbindung benötigen
 - Selbst gehostete Server, die immer erreichbar sein sollen
@@ -37,6 +39,7 @@ Folgende Anwendungsfälle könnte es für diese Software geben:
 ### Ziel
 Entwicklung einer Software, die mehrere Internetverbindungen zu einer kombiniert.
 Diese Software soll 2 grundlegende Betriebsmodi haben. Zum Einen ist es möglich eine Lastverteilung zwschen den beiden Internetverbindungen durchzuführen. Zum Anderen ist es möglich von einer Verbindung zur anderen zu wechseln, falls ein Uplink wegbricht.
+
 
 
 ### Varianten der Nutzung mehrerer Uplinks 
@@ -73,13 +76,24 @@ Viele Business Router bieten die Möglichkeit an mehr als einem WAN Interface In
 
 #### Die beste Variante für mich
 Ich habe mich entschieden eine flowbasierte Lastverteilug zu realisieren, da die anderen Varianten zu kompliziert sind oder nicht meinen Anforderungen entsprechen.
-Ein Loadbalancing auf Paketbasis ist für mich zu schwer zu realisieren, weil ich mit einfachen Open Source Mitteln arbeiten und eine zentrale Lösung erschaffen möchte. Es wäre ein zu großer Aufwand und außerdem nicht einfach nachbaubar, wenn ein zusätzlicher Router an einem anderen Ort mit einer stabileren Intenetverbindung installiert werden muss, z.B. in einem Rechenzentrum.
+Ein Loadbalancing auf Paketbasis ist für mich zu schwer zu realisieren, weil ich mit einfachen Open-Source Mitteln arbeiten und eine zentrale Lösung erschaffen möchte. Es wäre ein zu großer Aufwand und außerdem nicht einfach nachbaubar, wenn ein zusätzlicher Router an einem anderen Ort mit einer stabileren Intenetverbindung installiert werden muss, z.B. in einem Rechenzentrum.
 Eine hostbasierte Lastverteilung kommt für mich auch nicht in Frage, da sich gerade bei Privatanwendern meist nicht viele Geräte im Netzwerk befinden und es auch eine hohe Fluktuation im Netzwerk gibt. (Meist werden nicht alle Geräte gleichzeitig genutzt, z.B. wenn der PC für die Arbeit genutzt wird, wird nicht gleichzeit IP TV gestreamt und das Handy nicht genutzt.) Dies hätte eine relativ ungleichmäßige Verteilung der Last zur folge.
 Bei einem flowbasierten Loadbalancing wird selbst bei nur wenigen Hosts eine ausgewogene Verteilung erzielt ohne, dass externe Hardware benötigt wird.
 
 #### Wireguard and mwan3
-Da die meisten Router für Privatnutzer nur einen WAN Anschluss besitzen ist es nötig einen Router mit mehreren WAN Anschlüssen zu verwenden. Ich nutze dafür einen Router mit dem Linux Beriebssystem openWRT auf dem mwan3 installiert wird. Letzteres erlaubt es unter anderem virtuelle WAN Anschlüsse hinzuzufügen. Jedes virtuelle WAN Interfacewird dann via Wireguard VPN Tunnel mit einem weiteren Router verbunden welcher dann das physische WAN Interface zur Verfügung stellt.
-Des weiteren realisiert mwan3 das Loadbalancing bzw. Failover. Es entscheidet welcher Datenfluss über welches WAN Interface geroutet wird.
+Da die meisten Router für Privatnutzer nur einen WAN Anschluss besitzen ist es nötig einem Router weitere WAN Anschlüsse hinzuzufügen. Ich nutze dafür einen Router mit dem Linux Beriebssystem openWRT auf dem mwan3 installiert wird. Letzteres erlaubt es unter anderem virtuelle WAN Anschlüsse hinzuzufügen. Jedes virtuelle WAN Interfacewird dann via Wireguard VPN Tunnel mit einem weiteren Router verbunden welcher dann das physische WAN Interface zur Verfügung stellt.
+Des weiteren realisiert mwan3 das Loadbalancing. Es entscheidet welcher Datenfluss über welches WAN Interface geroutet wird.
+Für das Projekt benötigt man drei einfache Router, z.B. von TP Link, NETGEAR, etc., die teilweise schon gebraucht für unter 30€ erworben werden können. Eine Liste der mit openWRT kompatiblen Router findet man auf der Webseite "openwrt.org" unter dem Reiter "Supported devices".
+Der Einfachkeit halber habe ich mich allerdings entschieden mit drei virtualisierten openWRT Instanzen zu arbeiten. Diese habe ich zur besseren Übersicht benannt. Der Hauptrouter, auf dem mwan3 installiert ist, wird im folgenden als MutterRouter und die anderen beiden Router als Uplink1 und Uplink2 bezeichnet.
+
+####Konfiguration
+Genaue Installationsanleitung unter "Installation.md". Konfigurationsdateien für Netzwerk unter "network.md" und für mwan3 unter "mwan3.md".
+
+Zuerst habe ich auf allen drei Routern das Paket Wireguard installiert um vom MutterRouter jeweils einen VPN Tunnel zu jedem Uplink aufzubauen. Dabei ist es wichtig, dass jede VPN Verbindung auf dem MutterRouter als separates Interface eingerichtet wird.
+Dabei werden in der Netzwerk Konfigurationsdatei (/etc/config/network) zwei Interfaces "wg0" und "wg1" angelegt, mit dem Interfacetyp Wireguard, dem eigenen private Key, einer IP für die VPN Verbindung und einer Metric. Des weitern werden in der gleichen Datei die Wireguardverbindungen selbst konfiguriert. Diese Konfigurationen enthalten eine Liste mit zulässigen IPs für Verbindungen, IP und  der Gegenstelle und dem public Key der Gegenstelle. Gleiches erflogt auf den Uplinks.
+Mit einem einfachen Ping kann getestet werden, ob die VPN Verbindung aufgebaut wurde und die Gegenstelle erreichbar ist. Dabei ist darauf zu achten, dass der Ping auch über das entsprechende Interface ausgeführt wird, da sonst das ausgewählte Standartinterface benutzt wird.
+Wenn nun beide VPN Tunel stehen kann mit der Installation und Konfiguration von mwan3 fortgefahren werden. 
+Dazu wird das Paket mwan3 nur auf dem MutterRouter installiert. Zur Konfiguration wir die mwan3 Konfigurationsdatei aufgerufen, welche sim im gleichen Ordner wie die network Datei befindet (/etc/config/mwan3). 
 
 ### Work schedule
 - Get a general understanding of how multi gateway mesh network work
