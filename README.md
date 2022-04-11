@@ -19,7 +19,6 @@
 		- Wireguard und mwan3
         - Konfiguration
         - Ergebnis
-        - Unterschiede zu bestehenden Lösungen
 3. Zusammenfassung & Ausblick
 4. Anhang
 	- network Konfiguration (interfaces.md)
@@ -28,6 +27,7 @@
 
 ********************
 
+##Einleitung
 
 ### Motivation
 Ich habe durch Recherchen herausgefunden, dass es keine kostengünstige Lösung für Privatkunden gibt, mit der sich mehrere Internetverbindungen zu einer verbinden lassen. Also habe ich beschlossen, dieses Problem selbstständig als Open-Source Projekt anzugehen.
@@ -41,6 +41,7 @@ Entwicklung einer Software, die mehrere Internetverbindungen zu einer kombiniert
 Diese Software soll 2 grundlegende Betriebsmodi haben. Zum einen ist es möglich eine Lastverteilung zwischen den beiden Internetverbindungen durchzuführen. Zum anderen ist es möglich von einer Verbindung zur anderen zu wechseln, falls ein Uplink wegbricht.
 
 
+##Hauptteil
 
 ### Varianten der Nutzung mehrerer Uplinks 
 
@@ -98,7 +99,10 @@ Nun sollten nach Eingabe des Befehls "mwan3 interfaces" wg0 und wg1 als "online"
 
 ####Ergebnis
 Um zu testen, dass der Loadbalancer funktioniert habe ich auf den zwei Uplink-Routern einen tcpdump gestartet um zu sehen, welcher Traffic über welchen Uplink geleitet wird. Anscließend habe ich auf dem MutterRouter mehrere Pings gemacht und beobachtet auf über welchen Uplink die Pakete laufen. Wie erwartet wird immer ein Ping (also ein Flow) über einen Uplink geroutet, aber unterschiedliche Pings laufen jeweils über unterschiedliche Uplinks.
+Das zeigt genau die Funktionalität, die zu erzielen war.
 
+
+##Zusammenfassung&Ausblick
 
 
 ### Work schedule
