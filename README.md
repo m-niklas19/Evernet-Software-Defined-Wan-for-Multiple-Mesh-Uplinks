@@ -97,7 +97,8 @@ Dazu wird das Paket mwan3 nur auf dem MutterRouter installiert. Zur Konfiguratio
 Nun sollten nach Eingabe des Befehls "mwan3 interfaces" wg0 und wg1 als "online" sichtbar sein und nach Eingabe von "ip route" wg0 und wg1 als default gekennzeichnet sein.
 
 ####Ergebnis
-Um zu testen, dass der Loadbalancer funktioniert habe ich auf den zwei Uplink-Routern einen tcpdump gestartet um zu sehen, welcher Traffic über welchen Uplink geleitet wird. Anscließend habe ich auf dem MutterRouter mehrere Pings gemacht und beobachtet auf über welchen Uplink die Pakete laufen. Wie erwartet wird immer ein Ping (also ein Flow) über einen Uplink geroutet, aber unterschiedliche Pings laufen jeweils über unterschiedliche Uplinks. 
+Um zu testen, dass der Loadbalancer funktioniert habe ich auf den zwei Uplink-Routern einen tcpdump gestartet um zu sehen, welcher Traffic über welchen Uplink geleitet wird. Anscließend habe ich auf dem MutterRouter mehrere Pings gemacht und beobachtet auf über welchen Uplink die Pakete laufen. Wie erwartet wird immer ein Ping (also ein Flow) über einen Uplink geroutet, aber unterschiedliche Pings laufen jeweils über unterschiedliche Uplinks.
+
 
 
 ### Work schedule
