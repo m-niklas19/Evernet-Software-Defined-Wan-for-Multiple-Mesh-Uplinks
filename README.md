@@ -102,7 +102,7 @@ Um zu testen, dass der Loadbalancer funktioniert habe ich auf den zwei Uplink-Ro
 
 ##Zusammenfassung&Ausblick
 Es ist mir gelungen mit mwan3, Wireguard VPN Verbindungen und mehreren openWRT Routern einen funktionierenden Loadbalancer zu erstellen. Die angestrebten Funktionen konnte ich durch einfache Tests nachweisen. Erweiterte Tests mit konnte ich allerdings nicht machen, da ich nicht mit physischen Routern gearbeitet habe, sondern mit virtualisierten Routern. Durch meine detaillierte Installationsanleitung ist es auch für Nicht-Informatiker möglich den Loadbalancer nachzubauen.
-Für die Zukunft wäre es evtl. möglich die Installation weiter zu vereinfachen, zum Beispiel durch ein Skript, dass alle konfigurationen von allein vornimmt.
+Eine mögliche Erweiterung wäre es die Installation weiter zu vereinfachen, zum Beispiel durch ein Skript, dass alle Konfigurationen von allein vornimmt.
 
 
 ### Work schedule
