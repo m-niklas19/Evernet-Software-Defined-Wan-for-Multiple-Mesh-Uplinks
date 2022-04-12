@@ -34,11 +34,10 @@ Ich habe durch Recherchen herausgefunden, dass es keine kostengünstige Lösung 
 Folgende Anwendungsfälle könnte es für diese Software geben:
 - Livestreams, welch eine dauerhaft stabile Internetverbindung benötigen
 - Selbst gehostete Server, die immer erreichbar sein sollen
-- Initiativen wie Freifunk", die mehrere Internetverbindungen für ihre Mesh-Netzwerke brauchen
+- Initiativen wie "Freifunk", die mehrere Internetverbindungen für ihre Mesh-Netzwerke brauchen
 
 ### Ziel
-Entwicklung einer Software, die mehrere Internetverbindungen zu einer kombiniert.
-Diese Software soll 2 grundlegende Betriebsmodi haben. Zum einen ist es möglich eine Lastverteilung zwischen den beiden Internetverbindungen durchzuführen. Zum anderen ist es möglich von einer Verbindung zur anderen zu wechseln, falls ein Uplink wegbricht.
+Mein Ziel ist die Entwicklung einer Open-Source Lösung zur kombination mehrerer Internetverbindungen. Dabei soll eine Lastverteilung zwischen den Uplinks durchgeführt werden. Das System soll außerdem leicht nachbaubar sein.
 
 
 ##Hauptteil
@@ -98,11 +97,11 @@ Dazu wird das Paket mwan3 nur auf dem MutterRouter installiert. Zur Konfiguratio
 Nun sollten nach Eingabe des Befehls "mwan3 interfaces" wg0 und wg1 als "online" sichtbar sein und nach Eingabe von "ip route" wg0 und wg1 als default gekennzeichnet sein.
 
 ####Ergebnis
-Um zu testen, dass der Loadbalancer funktioniert habe ich auf den zwei Uplink-Routern einen tcpdump gestartet um zu sehen, welcher Traffic über welchen Uplink geleitet wird. Anscließend habe ich auf dem MutterRouter mehrere Pings gemacht und beobachtet auf über welchen Uplink die Pakete laufen. Wie erwartet wird immer ein Ping (also ein Flow) über einen Uplink geroutet, aber unterschiedliche Pings laufen jeweils über unterschiedliche Uplinks.
-Das zeigt genau die Funktionalität, die zu erzielen war.
+Um zu testen, dass der Loadbalancer funktioniert habe ich auf den zwei Uplink-Routern einen tcpdump gestartet um zu sehen, welcher Traffic über welchen Uplink geleitet wird. Anscließend habe ich auf dem MutterRouter mehrere Pings gemacht und beobachtet auf über welchen Uplink die Pakete laufen. Wie erwartet wird immer ein Ping (also ein Flow) über einen Uplink geroutet, aber unterschiedliche Flows laufen über unterschiedliche Uplinks.
 
 
 ##Zusammenfassung&Ausblick
+Es ist mir gelungen mit mwan3, Wireguard VPN Verbindungen und mehreren openWRT Routern einen funktionierenden Loadbalancer zu erstellen. Die angestrebten Funktionen konnte ich durch einfache Tests nachweisen. Erweiterte Tests mit konnte ich allerdings nicht machen, da ich nicht mit physischen Routern gearbeitet habe, sonder mit virtualisierten Routern.
 
 
 ### Work schedule
