@@ -1,4 +1,5 @@
-#MutterRouter:
+#MutterRouter /etc/config/network
+```
 config globals 'globals'
         option mmx_mask '0x3F00'
         option rtmon_interval '5'
@@ -53,3 +54,4 @@ config rule 'default_rule_v4'
         option dest_ip '0.0.0.0/0'
         option family 'ipv4'
         option use_policy 'balanced'
+```

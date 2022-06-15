@@ -2,28 +2,33 @@
 
 1. Einleitung
     - Motivation
-    - Ziel
-2. Hauptteil
+    - Problemstellung
+    - Hintergrund
+
+2. Implementierung Loadbalancing
     - Varianten der Nutzung mehrerer Uplinks
         - Lastverteilung
             - Paketbasiert
             - Hostbasiert
-			- Flowbasiert
+	- Flowbasiert
         - Failover
-    - Ähnliche Systeme
+    - Alternative Systeme
         - Viprinet
         - iTel
         - andere
-    - Meine Lösung
-		- Die beste Variante für mich
-		- Wireguard und mwan3
+    - Auswahl im Projekt
+        - Wireguard und mwan3
         - Konfiguration
-        - Ergebnis
+
+3. Validierung und Evaluation
+    - Untersuchte Szenarien (Failover, Loadbalangin, ect)
+    - Traffic Setup (tool: iperf3 ...)
+    - Ergebnis
+
 3. Zusammenfassung & Ausblick
 4. Anhang
 	- network Konfiguration (interfaces.md)
 	- mwan3 Konfiguration (mwan3.md)
-    - Installationsanleitung (Installation.md)
 
 ********************
 
@@ -69,7 +74,7 @@ Zu beachten ist dabei, dass der Kunde zwei Geräte kaufen muss. Der Router, welc
 Das System von iTel funktioniert im Großen und Ganzen ähnlich wie bei Viprinet, jedoch mit einem großen Unterschied.
 Der Bonding Aggregator, welcher die Datenpakete wieder zusammenführt, muss nicht vom Kunden erworben werden, sondern sitzt im Rechenzentrum von iTel. Das hat den Vorteil, dass hier zwar trotzdem monatliche Kosten anfallen, aber nicht der Kaufpreis und außerdem das Gerät vom Hersteller gewartet und im Fehlerfall ausgetauscht wird. Ein Nachteil ist allerdings die Datensicherheit, denn theoretisch kann iTel die Datenpakete analysieren.
 
-####Andere
+#### Andere
 Viele Business Router bieten die Möglichkeit an mehr als einem WAN Interface Internetverbindungen anzuschließen. Diese bieten oft aber nur die Möglichkeit des Failovers, also einer Redundanz, falls ein Uplink ausfällt. In seltenen Fällen gibt es die Möglichkeit einer Lastverteilung, wie z.B. bei Sophos. Hier wird aber nicht näher erläutert, auf welchem Weg das Loadbalancing realisiert wird.
 
 ### Meine Lösung
@@ -86,7 +91,7 @@ Des Weiteren realisiert mwan3 das Loadbalancing. Es entscheidet welcher Datenflu
 Für das Projekt benötigt man drei einfache Router, z.B. von TP Link, NETGEAR, etc., die teilweise schon gebraucht für unter 30€ erworben werden können. Eine Liste der mit openWRT kompatiblen Router findet man auf der Webseite "openwrt.org" unter dem Reiter "Supported devices".
 Der Einfachheit halber habe ich mich allerdings entschieden mit drei virtualisierten openWRT Instanzen zu arbeiten. Diese habe ich zur besseren Übersicht benannt. Der Hauptrouter, auf dem mwan3 installiert ist, wird im Folgenden als MutterRouter und die anderen beiden Router als Uplink1 und Uplink2 bezeichnet.
 
-####Konfiguration
+#### Konfiguration
 Genaue Installationsanleitung unter "Installation.md". Konfigurationsdateien für Netzwerk unter "network.md" und für mwan3 unter "mwan3.md".
 
 Zuerst habe ich auf allen drei Routern das Paket Wireguard installiert, um vom MutterRouter jeweils einen VPN Tunnel zu jedem Uplink aufzubauen. Dabei ist es wichtig, dass jede VPN Verbindung auf dem MutterRouter als separates Interface eingerichtet wird.
@@ -96,11 +101,11 @@ Wenn nun beide VPN Tunnel stehen, kann mit der Installation und Konfiguration vo
 Dazu wird das Paket mwan3 nur auf dem MutterRouter installiert. Zur Konfiguration wir die mwan3 Konfigurationsdatei aufgerufen, welche sich im gleichen Ordner wie die network Datei befindet (/etc/config/mwan3). Auch hier müssen zwei Interfaces angelegt werden. Diese werden analog zu den zwei Interfaces aus der Netzwerkkonfiguration benannt, damit mwan3 die Einstelllungen auf die richtigen Interfaces bezieht. Wichtig ist hier der Eintrag "option enabled", welche den Wert "1Q enthalten muss und der Eintrag "list track_ip". Bei letzterem werden IP-Adressen eingetragen, welche dafür benutzt werden, um mittels Ping zu überprüfen, ob das Interface eine Verbindung zum Internet hat. Ebenfalls muss pro Interface ein "Member" angelegt werden, welchen jeweils eins der Interfaces zugewiesen wird. Über die Einträge "metric" und "weight" kann eine Gewichtung der Interfaces beim Loadbalancing festgelegt werden oder auch ein Failover realisier werden. Bei mir sind die beiden Werte bei beiden Membern identisch, um eine 50/50 Lastverteilung zu erzielen. Um mwan3 weiß, welche Interfaces in welcher Situation genutzt werden sollen, müssen noch Regeln definiert werden. In einer neuen policy werden die member genannt, die angesprochen werden sollen. In welchem Fall, welche policy verwendet wird, wird mit einer rule festgelegt. Dabei können für verschiedene IP-Bereiche verschiedene Regeln genutzt werden. In meiner policy stehen beide member, die die beiden Wireguard Interfaces wg0 und wg1 beinhalten und meine rule gilt für den kompletten IPv4 Bereich und nutzt dafür die genannte policy.
 Nun sollten nach Eingabe des Befehls "mwan3 interfaces" wg0 und wg1 als "online" sichtbar sein und nach Eingabe von "ip route" wg0 und wg1 als default gekennzeichnet sein.
 
-####Ergebnis
+#### Ergebnis
 Um zu testen, dass der Loadbalancer funktioniert habe ich auf den zwei Uplink-Routern einen tcpdump gestartet um zu sehen, welcher Traffic über welchen Uplink geleitet wird. Anscließend habe ich auf dem MutterRouter mehrere Pings gemacht und beobachtet auf über welchen Uplink die Pakete laufen. Wie erwartet wird immer ein Ping (also ein Flow) über einen Uplink geroutet, aber unterschiedliche Flows laufen über unterschiedliche Uplinks.
 
 
-##Zusammenfassung&Ausblick
+## Zusammenfassung&Ausblick
 Es ist mir gelungen mit mwan3, Wireguard VPN Verbindungen und mehreren openWRT Routern einen funktionierenden Loadbalancer zu erstellen. Die angestrebten Funktionen konnte ich durch einfache Tests nachweisen. Erweiterte Tests mit konnte ich allerdings nicht machen, da ich nicht mit physischen Routern gearbeitet habe, sondern mit virtualisierten Routern. Durch meine detaillierte Installationsanleitung ist es auch für Nicht-Informatiker möglich den Loadbalancer nachzubauen.
 Eine mögliche Erweiterung wäre es die Installation weiter zu vereinfachen, zum Beispiel durch ein Skript, dass alle Konfigurationen von allein vornimmt.
 
