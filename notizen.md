@@ -1,1 +1,2 @@
-Für das Projekt reichen auch schon 3 einfache Router, z.B. von TP Link, etc., die teilweise schon für unter 30€ gebraucht erworben werden können.
+iperf -P
+Bandbreite pro Uplink limitieren
