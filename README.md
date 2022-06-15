@@ -2,28 +2,33 @@
 
 1. Einleitung
     - Motivation
-    - Ziel
-2. Hauptteil
+    - Problemstellung
+    - Hintergrund
+
+2. Implementierung Loadbalancing
     - Varianten der Nutzung mehrerer Uplinks
         - Lastverteilung
             - Paketbasiert
             - Hostbasiert
-			- Flowbasiert
+	- Flowbasiert
         - Failover
-    - Ähnliche Systeme
+    - Alternative Systeme
         - Viprinet
         - iTel
         - andere
-    - Meine Lösung
-		- Die beste Variante für mich
-		- Wireguard und mwan3
+    - Auswahl im Projekt
+        - Wireguard und mwan3
         - Konfiguration
-        - Ergebnis
+
+3. Validierung und Evaluation
+    - Untersuchte Szenarien (Failover, Loadbalangin, ect)
+    - Traffic Setup (tool: iperf3 ...)
+    - Ergebnis
+
 3. Zusammenfassung & Ausblick
 4. Anhang
 	- network Konfiguration (interfaces.md)
 	- mwan3 Konfiguration (mwan3.md)
-    - Installationsanleitung (Installation.md)
 
 ********************
 
