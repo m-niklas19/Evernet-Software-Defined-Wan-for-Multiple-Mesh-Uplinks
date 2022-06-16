@@ -105,7 +105,7 @@ Nun sollten nach Eingabe des Befehls "mwan3 interfaces" wg0 und wg1 als "online"
 Um zu testen, dass der Loadbalancer funktioniert habe ich auf den zwei Uplink-Routern einen tcpdump gestartet um zu sehen, welcher Traffic über welchen Uplink geleitet wird. Anscließend habe ich auf dem MutterRouter mehrere Pings gemacht und beobachtet auf über welchen Uplink die Pakete laufen. Wie erwartet wird immer ein Ping (also ein Flow) über einen Uplink geroutet, aber unterschiedliche Flows laufen über unterschiedliche Uplinks.
 
 
-## Zusammenfassung&Ausblick
+## Zusammenfassung & Ausblick
 Es ist mir gelungen mit mwan3, Wireguard VPN Verbindungen und mehreren openWRT Routern einen funktionierenden Loadbalancer zu erstellen. Die angestrebten Funktionen konnte ich durch einfache Tests nachweisen. Erweiterte Tests mit konnte ich allerdings nicht machen, da ich nicht mit physischen Routern gearbeitet habe, sondern mit virtualisierten Routern. Durch meine detaillierte Installationsanleitung ist es auch für Nicht-Informatiker möglich den Loadbalancer nachzubauen.
 Eine mögliche Erweiterung wäre es die Installation weiter zu vereinfachen, zum Beispiel durch ein Skript, dass alle Konfigurationen von allein vornimmt.
 
