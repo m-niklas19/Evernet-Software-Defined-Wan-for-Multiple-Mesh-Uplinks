@@ -1,7 +1,7 @@
 ## Softwarebasiertes WAN für mehrere Uplinks in drahtlosen Mesh-Netzwerken 
 
 1. Einleitung
-    - Motivation
+    - [Motivation]({< relref "README.md#Motivation" >})
     - Problemstellung
     - Hintergrund
 
