@@ -1,4 +1,5 @@
-#MutterRouter:
+#MutterRouter /etc/config/network
+```
 config interface 'loopback'
         option ifname 'lo'
         option proto 'static'
@@ -42,8 +43,10 @@ config wireguard_wg1
         option persistent_alive '25'
         option public_key 'h3ExiNRcj8wNQKFkMVQDjwFDIPKfDLYkBWTFI0wSO3Y='
         option route_allowed_ips 'true'
+```	
 
-#Uplink1:
+#Uplink1 /etc/config/network
+```
 config interface 'loopback'
         option device 'lo'
         option proto 'static'
@@ -68,8 +71,10 @@ config wireguard_wg0
         option description 'mutter_peer'
         list allowed_ips '10.20.0.1/32'
         option public_key 'PZDi7cVg10VhC8MujKyeQgCOYiDTKI6I9/rrKRc1sQA='
+```
 
-#Uplink2:
+#Uplink2 /etc/config/network
+```
 config interface 'loopback'
         option device 'lo'
         option proto 'static'
@@ -94,3 +99,4 @@ config wireguard_wg0
         option description 'mutter_peer'
         list allowed_ips '10.21.0.3/32'
         option public_key 'x+BHlpjNJHbaA8Mhh/Lr1+4LApQjZsQiSsXrjh56qno='
+```
