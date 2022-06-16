@@ -32,7 +32,7 @@
 
 ********************
 
-##Einleitung
+## Einleitung
 
 ### Motivation
 Ich habe durch Recherchen herausgefunden, dass es keine kostengünstige Lösung für Privatkunden gibt, mit der sich mehrere Internetverbindungen zu einer verbinden lassen. Also habe ich beschlossen, dieses Problem selbstständig als Open-Source Projekt anzugehen.
@@ -45,7 +45,7 @@ Folgende Anwendungsfälle könnte es für diese Software geben:
 Mein Ziel ist die Entwicklung einer Open-Source Lösung zur kombination mehrerer Internetverbindungen. Dabei soll eine Lastverteilung zwischen den Uplinks durchgeführt werden. Das System soll außerdem leicht nachbaubar sein.
 
 
-##Hauptteil
+## Hauptteil
 
 ### Varianten der Nutzung mehrerer Uplinks 
 
@@ -70,7 +70,7 @@ Das Ziel eines Failovers ist es, beim Ausfall einer Internetverbindung auf eine 
 Viprinet hat das Ziel eine hohe Ausfallsicherheit und eine Aggregation von mehreren Internetverbindungen zu gewährleisten. Dafür nutzen sie zwei Geräte. Einen Router mit mehreren WAN Interfaces, welcher an dem Standort positioniert wird, an dem die Ausfallsichere Internetverbindung benötigt wird. Dieser Router baut dann pro WAN Interface eine VPN Verbindung zu dem zweiten Gerät auf; dem VPN Hub. Dieser Hub ist so positioniert, dass er immer erreichbar ist, also z.B. in einem Rechenzentrum, weil dieser den eigentlichen Internetaustrittspunkt darstellt. Viprinet nutzt vermutlich eine Paketbasierte Lastverteilung, bei der der VPN Hub die einzelnen Pakete, die durch die verschiedenen WAN Interfaces auch verschiedene IPs besitzen, wieder zusammenfügt und mit seiner IP an das Ziel weiterleitet.
 Zu beachten ist dabei, dass der Kunde zwei Geräte kaufen muss. Der Router, welcher in der Firma positioniert wird und den VPN Hub, welcher in einem Rechenzentrum untergebracht werden sollte. Das bringt natürlich auch hohe Kosten mit sich, da die Kaufpreise der zwei Geräte anfallen und außerdem noch die Miete vom Rechenzentrum.
 
-####iTel
+#### iTel
 Das System von iTel funktioniert im Großen und Ganzen ähnlich wie bei Viprinet, jedoch mit einem großen Unterschied.
 Der Bonding Aggregator, welcher die Datenpakete wieder zusammenführt, muss nicht vom Kunden erworben werden, sondern sitzt im Rechenzentrum von iTel. Das hat den Vorteil, dass hier zwar trotzdem monatliche Kosten anfallen, aber nicht der Kaufpreis und außerdem das Gerät vom Hersteller gewartet und im Fehlerfall ausgetauscht wird. Ein Nachteil ist allerdings die Datensicherheit, denn theoretisch kann iTel die Datenpakete analysieren.
 
