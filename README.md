@@ -5,14 +5,14 @@
     - [Problemstellung](#Problemstellung)
     - [Hintergrund](#Hintergrund)
 
-2. [Implementierung Loadbalancing]
+2. [Implementierung Loadbalancing](#Implementierung Loadbalancing)
     - [Varianten der Nutzung mehrerer Uplinks](#Varianten der Nutzung mehrerer Uplinks)
         - [Lastverteilung](#Lastverteilung)
             - [Paketbasiert](#Paketbasiert)
             - [Hostbasiert](#Hostbasiert)
 			- [Flowbasiert](#Flowbasiert)
     - [Failover](#Failover)
-    - [Alternative Systeme](#Alterbative Systeme)
+    - [Alternative Systeme](#Alternative Systeme)
         - [Viprinet](#Viprinet)
         - [iTel](#iTel)
         - [andere](#andere)
@@ -45,7 +45,7 @@ Folgende Anwendungsfälle könnte es für diese Software geben:
 Mein Ziel ist die Entwicklung einer Open-Source Lösung zur kombination mehrerer Internetverbindungen. Dabei soll eine Lastverteilung zwischen den Uplinks durchgeführt werden. Das System soll außerdem leicht nachbaubar sein.
 
 
-## Hauptteil
+## Implementierung Loadbalancing
 
 ### Varianten der Nutzung mehrerer Uplinks 
 
