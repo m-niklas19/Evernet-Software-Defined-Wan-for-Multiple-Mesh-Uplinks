@@ -1,4 +1,4 @@
-#MutterRouter /etc/config/mwan3
+# MutterRouter /etc/config/mwan3
 ```
 config globals 'globals'
         option mmx_mask '0x3F00'

@@ -1,4 +1,4 @@
-#MutterRouter /etc/config/network
+# MutterRouter /etc/config/network
 ```
 config interface 'loopback'
         option ifname 'lo'
@@ -45,7 +45,7 @@ config wireguard_wg1
         option route_allowed_ips 'true'
 ```	
 
-#Uplink1 /etc/config/network
+# Uplink1 /etc/config/network
 ```
 config interface 'loopback'
         option device 'lo'
@@ -73,7 +73,7 @@ config wireguard_wg0
         option public_key 'PZDi7cVg10VhC8MujKyeQgCOYiDTKI6I9/rrKRc1sQA='
 ```
 
-#Uplink2 /etc/config/network
+# Uplink2 /etc/config/network
 ```
 config interface 'loopback'
         option device 'lo'
