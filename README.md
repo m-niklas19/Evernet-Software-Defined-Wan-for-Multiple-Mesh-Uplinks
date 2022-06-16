@@ -12,7 +12,7 @@
             - [Hostbasiert](#Hostbasiert)
 			- [Flowbasiert](#Flowbasiert)
     - [Failover](#Failover)
-    - [Alternative Systeme](#Alternative Systeme)
+    - [Alternative Systeme](#Alternative)
         - [Viprinet](#Viprinet)
         - [iTel](#iTel)
         - [andere](#andere)
