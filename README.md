@@ -5,14 +5,14 @@
     - [Problemstellung](#Problemstellung)
     - [Hintergrund](#Hintergrund)
 
-2. [Implementierung Loadbalancing](#Implementierung Loadbalancing)
-    - [Varianten der Nutzung mehrerer Uplinks](#Varianten der Nutzung mehrerer Uplinks)
+2. [Implementierung](#Implementierung)
+    - [Varianten](#Varianten)
         - [Lastverteilung](#Lastverteilung)
             - [Paketbasiert](#Paketbasiert)
             - [Hostbasiert](#Hostbasiert)
 			- [Flowbasiert](#Flowbasiert)
     - [Failover](#Failover)
-    - [Alternative Systeme](#Alternative Systeme)
+    - [Alternativen](#Alternativen)
         - [Viprinet](#Viprinet)
         - [iTel](#iTel)
         - [andere](#andere)
@@ -45,9 +45,9 @@ Folgende Anwendungsfälle könnte es für diese Software geben:
 Mein Ziel ist die Entwicklung einer Open-Source Lösung zur kombination mehrerer Internetverbindungen. Dabei soll eine Lastverteilung zwischen den Uplinks durchgeführt werden. Das System soll außerdem leicht nachbaubar sein.
 
 
-## Implementierung Loadbalancing
+## Implementierung
 
-### Varianten der Nutzung mehrerer Uplinks 
+### Varianten 
 
 #### Lastverteilung
 Wie schon eingangs erwähnt ist einer Betriebsmodus die Lastverteilung. Diese kann auf mehrere Arten durchgeführt werden, welche verschiedene Vor- und Nachteile bieten.
@@ -64,7 +64,7 @@ Die Lastverteilung durch Flows ist eine gute Variante, wenn es nur wenige Hosts 
 Das Ziel eines Failovers ist es, beim Ausfall einer Internetverbindung auf eine zweite zu wechseln. Diese Variante ermöglicht es eine dauerhaft stabile Internetverbindung aufrecht zu erhalten, auch wenn ein Uplink wegbricht. Dadurch ist Failover die sicherste Möglichkeit des Zugangs zum Internet, aber bietet keine Geschwindigkeitsvorteile.
 
 
-### Ähnliche Systeme
+### Alternativen
 
 #### Viprinet
 Viprinet hat das Ziel eine hohe Ausfallsicherheit und eine Aggregation von mehreren Internetverbindungen zu gewährleisten. Dafür nutzen sie zwei Geräte. Einen Router mit mehreren WAN Interfaces, welcher an dem Standort positioniert wird, an dem die Ausfallsichere Internetverbindung benötigt wird. Dieser Router baut dann pro WAN Interface eine VPN Verbindung zu dem zweiten Gerät auf; dem VPN Hub. Dieser Hub ist so positioniert, dass er immer erreichbar ist, also z.B. in einem Rechenzentrum, weil dieser den eigentlichen Internetaustrittspunkt darstellt. Viprinet nutzt vermutlich eine Paketbasierte Lastverteilung, bei der der VPN Hub die einzelnen Pakete, die durch die verschiedenen WAN Interfaces auch verschiedene IPs besitzen, wieder zusammenfügt und mit seiner IP an das Ziel weiterleitet.
