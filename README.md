@@ -75,7 +75,7 @@ Viprinet hat das Ziel eine hohe Ausfallsicherheit und eine Aggregation von mehre
 Zu beachten ist dabei, dass der Kunde zwei Geräte kaufen muss. Der Router, welcher in der Firma positioniert wird und den VPN Hub, welcher in einem Rechenzentrum untergebracht werden sollte. Das bringt natürlich auch hohe Kosten mit sich, da die Kaufpreise der zwei Geräte anfallen und außerdem noch die Miete vom Rechenzentrum.
 
 #### iTel
-Das System von iTel funktioniert im Großen und Ganzen ähnlich wie bei Viprinet, jedoch mit einem großen Unterschied.
+Das System von iTel funktioniert ähnlich wie bei Viprinet, jedoch mit einem großen Unterschied.
 Der Bonding Aggregator, welcher die Datenpakete wieder zusammenführt, muss nicht vom Kunden erworben werden, sondern sitzt im Rechenzentrum von iTel. Das hat den Vorteil, dass hier zwar trotzdem monatliche Kosten anfallen, aber nicht der Kaufpreis und außerdem das Gerät vom Hersteller gewartet und im Fehlerfall ausgetauscht wird. Ein Nachteil ist allerdings die Datensicherheit, denn theoretisch kann iTel die Datenpakete analysieren.
 
 #### Andere
