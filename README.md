@@ -1,6 +1,6 @@
 ## Softwarebasiertes WAN für mehrere Uplinks in drahtlosen Mesh-Netzwerken 
 
-1. [Einleitung](/m-niklas19/Evernet-Software-Defined-Wan-for-Multiple-Mesh-Uplinks/Einleitung)
+1. [Einleitung](#Einleitung)
     - [Motivation](#Motivation)
     - [Problemstellung](#Problemstellung)
     - [Hintergrund](#Hintergrund)
@@ -17,7 +17,7 @@
         - [iTel](#iTel)
         - [andere](#andere)
     - [Auswahl im Projekt](#)
-        - [Wireguard und mwan3](#Wireguard und mwan3)
+        - [Wireguard und mwan3](#Wireguard-und-mwan3)
         - [Konfiguration](#)
 
 3. Validierung und Evaluation
