@@ -22,7 +22,7 @@
 
 3. [Validierung und Evaluation](#Validierung-und-Evaluation)
     - [Untersuchte Szenarien](#Untersuchte-Szenarien)
-    - [Traffic Setup](#Traffic Setup)
+    - [Traffic Setup](#Traffic-Setup)
     - [Ergebnis](#Ergebnis)
 
 3. [Zusammenfassung & Ausblick](#Zusammenfassung--Ausblick)
