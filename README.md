@@ -17,7 +17,7 @@
         - [iTel](#iTel)
         - [andere](#andere)
     - [Auswahl im Projekt](#)
-        - [Wireguard und mwan3](#Wireguard-und-mwan3)
+        - [Wireguard und mwan3](#Wireguard und mwan3)
         - [Konfiguration](#)
 
 3. Validierung und Evaluation
@@ -85,7 +85,7 @@ Ein Loadbalancing auf Paketbasis ist für mich zu schwer zu realisieren, weil ic
 Eine hostbasierte Lastverteilung kommt für mich auch nicht in Frage, da sich gerade bei Privatanwendern meist nicht viele Geräte im Netzwerk befinden und es auch eine hohe Fluktuation im Netzwerk gibt. (Meist werden nicht alle Geräte gleichzeitig genutzt, z.B. wenn der PC für die Arbeit genutzt wird, wird nicht gleichzeitig IP TV gestreamt und das Handy nicht genutzt.) Dies hätte eine relativ ungleichmäßige Verteilung der Last zur folge.
 Bei einem flowbasierten Loadbalancing wird selbst bei nur wenigen Hosts eine ausgewogene Verteilung erzielt ohne, dass externe Hardware benötigt wird.
 
-#### Wireguard and mwan3
+#### Wireguard und mwan3
 Da die meisten Router für Privatnutzer nur einen WAN Anschluss besitzen ist es nötig einem Router weitere WAN Anschlüsse hinzuzufügen. Ich nutze dafür einen Router mit dem Linux Betriebssystem openWRT auf dem mwan3 installiert wird. Letzteres erlaubt es unter anderem virtuelle WAN Anschlüsse hinzuzufügen. Jedes virtuelle WAN Interfacewird dann via Wireguard VPN Tunnel mit einem weiteren Router verbunden, welcher dann das physische WAN Interface zur Verfügung stellt.
 Des Weiteren realisiert mwan3 das Loadbalancing. Es entscheidet welcher Datenfluss über welches WAN Interface geroutet wird.
 Für das Projekt benötigt man drei einfache Router, z.B. von TP Link, NETGEAR, etc., die teilweise schon gebraucht für unter 30€ erworben werden können. Eine Liste der mit openWRT kompatiblen Router findet man auf der Webseite "openwrt.org" unter dem Reiter "Supported devices".
