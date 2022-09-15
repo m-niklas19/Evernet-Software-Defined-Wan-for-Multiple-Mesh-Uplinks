@@ -36,17 +36,13 @@
 ## Einleitung
 
 ### Motivation
-Ich habe durch Recherchen herausgefunden, dass es keine kostengünstige Lösung für Privatkunden gibt, mit der sich mehrere Internetverbindungen zu einer verbinden lassen. Also habe ich beschlossen, dieses Problem selbstständig als Open-Source Projekt anzugehen.
-Folgende Anwendungsfälle könnte es für diese Software geben:
-- Livestreams, welch eine dauerhaft stabile Internetverbindung benötigen
-- Selbst gehostete Server, die immer erreichbar sein sollen
-- Initiativen wie "Freifunk", die mehrere Internetverbindungen für ihre Mesh-Netzwerke brauchen
-
-### Ziel
-Mein Ziel ist die Entwicklung einer Open-Source Lösung zur kombination mehrerer Internetverbindungen. Dabei soll eine Lastverteilung zwischen den Uplinks durchgeführt werden. Das System soll außerdem leicht nachbaubar sein.
+Durch meine Interessen im Bereich Kommunikations- und Veranstaltungstechnik habe ich oft die Herausforderung, dass für bestimmte Vorhaben eine stabile und schnelle Internetanbindung benötigt wird. Solche Anwendungsfälle sind zum Beispiel Livestreams, Server oder selbst verwaltete Mesh-Netzwerke wie von "Freifunk".
 
 ### Hintergrund
+Um eine solche zuverlässige Internetverbindung zu realisieren ist es notwending mehrere Anschlüsse ans Internet zu verbinden. Dadurch ergibt sich eine höhere Geschwindigkeit durch verteilung des Traffic auf alle Uplinks. Des weiteren sind im Fall des Abbruch einer Verbindung die anderen weiterhin mit dem Internet verbunden.
 
+### Problemstellung
+Da bereits bestehende Lösungen von diversen Herstellern meist teuer sind und nicht die gewünschte Funktionsweise bieten, habe ich mich entschlossen eine eigene Lösung zu entwickeln. Das Ziel soll es sein eine Lastverteilung zwischen mehreren Internetverbindungen zu gewährleisten. Das System soll ausschließlich mit Open-Source Software realisiert werden, damit nur geringe kosten für Hardware entstehen und es einfach nachbaubar ist.
 
 
 ## Implementierung
