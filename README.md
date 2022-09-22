@@ -29,7 +29,7 @@
 
 4. Anhang
 	- [network Konfiguration](https://github.com/m-niklas19/Evernet-Software-Defined-Wan-for-Multiple-Mesh-Uplinks/blob/main/Quellen/mwan3%20config.md)
-	- [mwan3 Konfiguration](Quellen/mwan3-config.md)
+	- [mwan3 Konfiguration](/Quellen/network%20config.md)
 
 ********************
 
