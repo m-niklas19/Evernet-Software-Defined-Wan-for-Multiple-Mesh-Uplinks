@@ -103,10 +103,11 @@ Nun sollten nach Eingabe des Befehls "mwan3 interfaces" wg0 und wg1 als "online"
 ## Validierung und Evaluation
 
 ### Untersuchte Szenarien
-
+Ich habe zwei grundlegende Szenarien untersucht. Dabei handelt es sich zum Einen um den Normalbetrieb des Systems, bei dem beide Internetverbindungen aktiv sind und überprüft werden soll, ob das Loadbalancing funktioniert und der Traffic gleichmäßig auf alle Uplinks aufgeteilt wird.
+Das zweite Szenario baut auf dem ersten auf und simuliert den Ausfall einer Internetverbindung und soll zeigen, ob in diesem Fall der Traffic auf die andere Internetverbindung umgeleitet wird, also der Failover funktioniert.
 
 ### Traffic Setup
-
+Getestet habe ich die Szenarien mithilfe eines iPerf3
 
 #### Ergebnis
 Um zu testen, dass der Loadbalancer funktioniert habe ich auf den zwei Uplink-Routern einen tcpdump gestartet um zu sehen, welcher Traffic über welchen Uplink geleitet wird. Anscließend habe ich auf dem MutterRouter mehrere Pings gemacht und beobachtet auf über welchen Uplink die Pakete laufen. Wie erwartet wird immer ein Ping (also ein Flow) über einen Uplink geroutet, aber unterschiedliche Flows laufen über unterschiedliche Uplinks.
@@ -116,20 +117,3 @@ Um zu testen, dass der Loadbalancer funktioniert habe ich auf den zwei Uplink-Ro
 Es ist mir gelungen mit mwan3, Wireguard VPN Verbindungen und mehreren openWRT Routern einen funktionierenden Loadbalancer zu erstellen. Die angestrebten Funktionen konnte ich durch einfache Tests nachweisen. Erweiterte Tests mit konnte ich allerdings nicht machen, da ich nicht mit physischen Routern gearbeitet habe, sondern mit virtualisierten Routern. Durch meine detaillierte Installationsanleitung ist es auch für Nicht-Informatiker möglich den Loadbalancer nachzubauen.
 Eine mögliche Erweiterung wäre es die Installation weiter zu vereinfachen, zum Beispiel durch ein Skript, dass alle Konfigurationen von allein vornimmt.
 
-
-### Work schedule
-- Get a general understanding of how multi gateway mesh network work
-- Get a general understanding of Wireguard and mwan3
-- Learn hoe to combine those technical tunnel and load scheduling and sharing technics
-- Develop technical concept for multi gateway multiplexing
-  - What are the Wireguard and Routing challenges to tackle?
-  - How will handover switches in cases of failure speed up?
-  - Which kind of traffic flows can be easily loadbalanced hence muliuplexed across multiple gayteways?
-- Create a usable Freinfunk web-based user interface for administration.
-
-## ToDo List:
-- [x] Check & Add Related Work with References
-- [x] Software Design
-- [x] Programmierung / Umsetzung
-- [ ] Schriftkram
-- [x] Zusammenfassung & Ausblick
