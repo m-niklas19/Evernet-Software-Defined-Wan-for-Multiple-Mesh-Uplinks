@@ -28,8 +28,8 @@
 3. [Zusammenfassung & Ausblick](#Zusammenfassung--Ausblick)
 
 4. Anhang
-	- network Konfiguration (interfaces.md)
-	- mwan3 Konfiguration (mwan3.md)
+	- [network Konfiguration](Quellen/interfaces.md)
+	- [mwan3 Konfiguration](Quellen/mwan3.md)
 
 ********************
 
