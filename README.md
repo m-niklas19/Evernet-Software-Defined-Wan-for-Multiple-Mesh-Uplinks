@@ -107,13 +107,14 @@ Ich habe zwei grundlegende Szenarien untersucht. Dabei handelt es sich zum Einen
 Das zweite Szenario baut auf dem ersten auf und simuliert den Ausfall einer Internetverbindung und soll zeigen, ob in diesem Fall der Traffic auf die andere Internetverbindung umgeleitet wird, also der Failover funktioniert.
 
 ### Traffic Setup
-Getestet habe ich die Szenarien mithilfe eines iPerf3
+Getestet habe ich die Szenarien mithilfe eines iPerf3 Speedtest. Beim ersten Versuch habe ich zwei parallele iPerf3 Streams laufen lassen um zu sehen, ob der Traffic gleichmäßg verteilt wird.
+Beim zweiten Versuch habe ich, während der laufenden iPerf3 Streams, einen Uplinkrouter ausgeschaltet um einen Ausfall zu simulieren und das verhalten von mwan3 in diesem Fall zu überprüfen.
 
 #### Ergebnis
-Um zu testen, dass der Loadbalancer funktioniert habe ich auf den zwei Uplink-Routern einen tcpdump gestartet um zu sehen, welcher Traffic über welchen Uplink geleitet wird. Anscließend habe ich auf dem MutterRouter mehrere Pings gemacht und beobachtet auf über welchen Uplink die Pakete laufen. Wie erwartet wird immer ein Ping (also ein Flow) über einen Uplink geroutet, aber unterschiedliche Flows laufen über unterschiedliche Uplinks.
+Beim ersten Szenario hat sich gezeigt, dass wie erwartet der Traffic gleichmäßig auf beide Uplinks aufgeteilt wird. Die Funktion als Loadbalancer ist also gegeben.
+Beim zweiten Teil des Versuchs konnte ich beobachten, dass der gerade aktiv laufende Flow nicht sofort auf die weiterhin aktive Internetverbindung umgeleitet wird. Sobald ein neuer Flow gestartet wird, wird dieser jedoch, wie gewünscht, über den aktiven Uplink geleitet. Das zeigt, dass die Funktion als Failover nicht vollumfänglich, aber in einem trotzdem praktisch nutzbaren Rahmen gegeben ist.
 
 
 ## Zusammenfassung & Ausblick
-Es ist mir gelungen mit mwan3, Wireguard VPN Verbindungen und mehreren openWRT Routern einen funktionierenden Loadbalancer zu erstellen. Die angestrebten Funktionen konnte ich durch einfache Tests nachweisen. Erweiterte Tests mit konnte ich allerdings nicht machen, da ich nicht mit physischen Routern gearbeitet habe, sondern mit virtualisierten Routern. Durch meine detaillierte Installationsanleitung ist es auch für Nicht-Informatiker möglich den Loadbalancer nachzubauen.
-Eine mögliche Erweiterung wäre es die Installation weiter zu vereinfachen, zum Beispiel durch ein Skript, dass alle Konfigurationen von allein vornimmt.
+Es ist mir gelungen mit mwan3, Wireguard VPN Verbindungen und mehreren openWRT Routern einen funktionierenden Loadbalancer zu erstellen. Ich konnte auch durch Tests nachweisen, dass die angestrebten Funktionen (Loadbalancing und Failover) funktionieren. Da dieses Projekt auf virtualisierten Routern basiert kann jedoch nicht gesagt werden, dass es auch in der Praxis funktioniert und ggf. an einigen stellen optimiert werden müsste. Dafür wäre es nötig das System mit nicht-virtualisierten Routern aufzubauen und in, in der Einleitung beschriebenen, Szenarien zu testen.
 
